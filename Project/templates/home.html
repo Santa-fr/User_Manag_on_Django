@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %} 
+
+{% block content %}
+    <h1> Welcome to the Home Page of this mini users management website </h1>
+    {% if user.is_authenticated %}
+        <p> 
+            <strong> You are logged in as {{ user.username }} </strong>
+            <a href="{% url 'logout' %}">    Log Out Here </a>
+        </p>
+        <p>
+            If you want to see the list of users <br>
+            <a href="{% url 'list' %}">  Click  here </a> <br>
+        </p>
+    {% else %}
+        <p> 
+            <strong> Your are not logged in </strong>
+        </p>
+        <p>
+            If you already have an account <br>
+            <a href="{% url 'login' %}">     Log in here </a> <br>
+        </p>
+        <p>
+            If you have not yet an account <br>
+            <a href="{% url 'signup' %}">    Sign up here </a> <br>
+        </p>
+
+    {% endif %}
+{% endblock%}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+    List Page
+{% endblock %} 
+
+{% block content %}
+    <h1> List of Users </h1>
+    
+    <p>
+        If you want to create a new user <br>
+        <a href="{% url 'create' %}">  Click  here </a> <br>
+    </p>
+    <p>
+        If you want to log out <br>
+        <a href="{% url 'logout' %}">  Click  here </a> <br>
+    </p>
+
+    <table>
+        <tr>
+        <th> Nom </th>
+        <th> Prenom </th>
+        <th> Email </th>
+        <th> Revues </th>
+        </tr> 
+    
+        {% for user in users %}
+        <tr>
+        <td>{{ user.nom }}</td>
+        <td>{{ user.prenom }}</td>
+        <td>{{ user.mail }}</td>
+        <td>{{ user.revues }}</td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+{% endblock%}
